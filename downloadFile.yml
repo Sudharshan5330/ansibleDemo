@@ -1,0 +1,26 @@
+---
+- name: Postgre SQL Database installation and configuration
+  hosts: demo
+  become: true
+  become_user: root
+  vars:
+    proxy_env:
+            http_proxy: web-proxy.in.softwaregrp.net:8080
+  tasks:
+  - name: Get the OS platform
+    command: cat /etc/redhat-release
+    register: redhatRelease
+
+  - name: Print the redhat-release
+    debug: msg={{ redhatRelease.stdout }}
+ 
+  - name: download file
+    become: yes
+    get_url:
+            url: http://15.218.112.247/depots/APPLICATIONS/MySQL/MySQL8.0/RHEL/mysql-commercial-backup-8.0.13-1.1.el7.x86_64.rpm
+            dest: /dump/oracle
+            mode: 777
+
+
+
+
