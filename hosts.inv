@@ -1,0 +1,10 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=deploy
+ansible_sudo=true
+ansible_become=true
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+
+[demo]
+15.218.113.253 ansible_ssh_user=root   ansible_ssh_pass=data*pr0
